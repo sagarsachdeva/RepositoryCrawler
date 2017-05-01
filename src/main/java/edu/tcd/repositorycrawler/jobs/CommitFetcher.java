@@ -23,7 +23,7 @@ public class CommitFetcher {
 
 	@SuppressWarnings({ "unchecked", "unused" })
 	public static void main(String[] args) {
-		List<Commit> issueComments = new ArrayList<Commit>();
+		List<Commit> commits = new ArrayList<Commit>();
 
 		List<User> users = userDAO.getAllUser();
 		EventExtractor<List<Commit>> eventExtractor = new EventExtractor<List<Commit>>(commitExtractor,
@@ -31,8 +31,8 @@ public class CommitFetcher {
 		int userCount = 0;
 		for (User user : users) {
 			userCount++;
-			if (userCount < 100)
-				continue;
+			// if (userCount < 100)
+			// continue;
 
 			String eventsUrl = user.getUrl() + Constants.eventsURLString;
 			int i = 1;
@@ -50,7 +50,7 @@ public class CommitFetcher {
 					if (eventsJson.size() == 0)
 						break;
 
-					issueComments = (List<Commit>) eventExtractor.objectExtractor(eventsJsonString);
+					commits = (List<Commit>) eventExtractor.objectExtractor(eventsJsonString);
 
 					i++;
 				} catch (Exception e) {

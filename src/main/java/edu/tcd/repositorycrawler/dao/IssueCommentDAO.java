@@ -36,7 +36,6 @@ public class IssueCommentDAO {
 	}
 
 	public IssueComment getIssueCommentId(String issueCommentId) {
-		System.out.println();
 		Session session = null;
 		IssueComment i = null;
 		try {

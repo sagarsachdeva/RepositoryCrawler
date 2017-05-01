@@ -34,7 +34,6 @@ public class ReactionDAO {
 	}
 
 	public Reaction getReactionById(String reactionId) {
-		System.out.println();
 		Session session = null;
 		Reaction r = null;
 		try {

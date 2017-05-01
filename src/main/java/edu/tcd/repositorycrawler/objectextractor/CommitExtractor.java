@@ -66,7 +66,7 @@ public class CommitExtractor implements ObjectExtractor<List<Commit>> {
 			commits.add(commit);
 		}
 
-		return null;
+		return commits;
 	}
 
 	private Commit extractCommit(String commitJsonString, String actorName) {

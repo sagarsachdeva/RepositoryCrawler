@@ -34,6 +34,9 @@ public class Issue {
 	@Column(name = "URL")
 	private String url;
 
+	@Column(name = "NO_OF_COMMENTS")
+	private int noOfComments;
+
 	@Column(name = "BODY")
 	private String body;
 
@@ -146,5 +149,13 @@ public class Issue {
 
 	public void setIssueId(String issueId) {
 		this.issueId = issueId;
+	}
+
+	public int getNoOfComments() {
+		return noOfComments;
+	}
+
+	public void setNoOfComments(int noOfComments) {
+		this.noOfComments = noOfComments;
 	}
 }

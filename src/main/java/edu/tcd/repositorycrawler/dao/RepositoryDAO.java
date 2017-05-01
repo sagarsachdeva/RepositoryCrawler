@@ -36,7 +36,6 @@ public class RepositoryDAO {
 	}
 
 	public Repository getRepositoryById(String repositoryId) {
-		System.out.println();
 		Session session = null;
 		Repository r = null;
 		try {

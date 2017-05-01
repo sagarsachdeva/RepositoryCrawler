@@ -57,6 +57,7 @@ public class IssueExtractor implements ObjectExtractor<Issue> {
 		issue.setBody(issueObject.getString("body"));
 		issue.setLabels(fetchLabels(issueObject.getString("labels")));
 		issue.setUrl(issueObject.getString("url"));
+		issue.setNoOfComments(Integer.parseInt(issueObject.getString("comments")));
 		issue.setCreatedAt(DateParser.parseDate(issueObject.getString("created_at")));
 		issue.setUpdatedAt(DateParser.parseDate(issueObject.getString("updated_at")));
 		issue.setClosedAt(DateParser.parseDate(issueObject.getString("closed_at")));

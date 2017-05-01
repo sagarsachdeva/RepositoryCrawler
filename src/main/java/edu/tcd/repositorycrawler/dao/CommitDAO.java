@@ -1,5 +1,9 @@
 package edu.tcd.repositorycrawler.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -32,7 +36,6 @@ public class CommitDAO {
 	}
 
 	public Commit getCommitById(String commitId) {
-		System.out.println();
 		Session session = null;
 		Commit c = null;
 		try {
@@ -49,5 +52,22 @@ public class CommitDAO {
 				session.close();
 		}
 		return c;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Commit> getAllCommits() {
+		List<Commit> commits = new ArrayList<Commit>();
+		Session session = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery("from Commit");
+			commits = query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session.isOpen())
+				session.close();
+		}
+		return commits;
 	}
 }

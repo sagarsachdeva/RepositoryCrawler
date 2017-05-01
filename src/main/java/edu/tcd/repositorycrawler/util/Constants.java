@@ -10,7 +10,7 @@ public class Constants {
 
 	public static String maxPerPageString = "&per_page=100";
 
-	public static String oAuthString = "f07a7f402580b853a2cdd461ec4613dcecc825bc";
+	public static String oAuthString = "3fe4e502482a6af45a4924db4845067a2c114fc4";
 
 	public static String issueURLString = "/issues";
 

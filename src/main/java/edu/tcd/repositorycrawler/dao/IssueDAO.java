@@ -36,7 +36,6 @@ public class IssueDAO {
 	}
 
 	public Issue getIssueById(String issueId) {
-		System.out.println();
 		Session session = null;
 		Issue i = null;
 		try {
@@ -64,5 +63,25 @@ public class IssueDAO {
 			e.printStackTrace();
 		}
 		return issues;
+	}
+	
+	public void updateIssue(Issue issue) {
+		Session session = null;
+		Transaction t = null;
+
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			t = session.beginTransaction();
+
+			session.update(issue);
+
+			t.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			t.rollback();
+		} finally {
+			if (session.isOpen())
+				session.close();
+		}
 	}
 }

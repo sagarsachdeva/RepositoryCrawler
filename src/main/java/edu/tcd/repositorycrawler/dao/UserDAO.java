@@ -34,7 +34,6 @@ public class UserDAO {
 	}
 
 	private User getUserById(String userId) {
-		System.out.println();
 		Session session = null;
 		User u = null;
 		try {
