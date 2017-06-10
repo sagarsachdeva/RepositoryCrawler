@@ -1,5 +1,7 @@
 package edu.tcd.repositorycrawler.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -47,5 +49,30 @@ public class CommitModificationsDAO {
 				session.close();
 		}
 		return c;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Object[]> getExtensionsWithLocChanged() {
+		Session session = null;
+		List<Object[]> o = null;
+
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			o = session
+					.createSQLQuery(
+							"select extension, sum(lines_changed) from commit_modifications group by extension order by sum(lines_changed) desc")
+					.list();
+			if (o == null) {
+				session.close();
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session.isOpen())
+				session.close();
+		}
+		return o;
+
 	}
 }
